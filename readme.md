@@ -4,7 +4,7 @@ Tento projekt představuje interaktivní dioramu vytvořenou pomocí HTML, CSS a
 ## Použití
 Stačí otevřít soubor **index.html** ve webovém prohlížeči.
 Poté se na obrazovce objeví znaky, které se pohybují směrem dolu.
-Kliknutím na tlačítko **Change Characters** lze změnit znaky, které se zobrazují na obrazovce. Na výběr je ze dvou variant a to z normální abecedy a čínských znaků.
+Kliknutím na tlačítko **"Change Characters"** lze změnit znaky, které se zobrazují na obrazovce. Na výběr je ze dvou variant a to z normální abecedy a čínských znaků.
 
 ## Funkce
 Znaky se náhodně generují a pohybují se dolu tokem po obrazovce.
