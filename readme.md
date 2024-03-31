@@ -10,7 +10,7 @@ Kliknutím na tlačítko "Change Characters" lze změnit znaky, které se zobraz
 Animace znaků: Znaky se náhodně generují a pohybují se nahoru po plátně.
 Změna znaků: Uživatel může kliknout na tlačítko a změnit znaky, které se zobrazují na plátně.
 
-##Technologie
+## Technologie
 HTML5: Struktura webového dokumentu.
 CSS3: Stylování webového dokumentu.
 JavaScript: Logika a animace dioramy.
