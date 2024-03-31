@@ -2,7 +2,7 @@
 Tento projekt představuje interaktivní dioramu vytvořenou pomocí HTML, CSS a JavaScriptu. Diorama je umělecká technika, která vytváří scény v malém měřítku, často v truhle nebo krabici. Tato diorama umožňuje uživateli interakci pomocí tlačítka, které mění znaky zobrazené na plátně, a animuje jejich pohyb.
 
 ## Použití
-Stačí otevřít soubor index.html ve webovém prohlížeči.
+Stačí otevřít soubor **index.html** ve webovém prohlížeči.
 Na plátně se zobrazí animované znaky.
 Kliknutím na tlačítko "Change Characters" lze změnit znaky, které se zobrazují na plátně.
 
