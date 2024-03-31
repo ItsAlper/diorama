@@ -12,5 +12,7 @@ Změna znaků: Uživatel může kliknout na tlačítko a změnit znaky, které s
 
 ## Technologie
 HTML5: Struktura webového dokumentu.
+
 CSS3: Stylování webového dokumentu.
+
 JavaScript: Logika a animace dioramy.
