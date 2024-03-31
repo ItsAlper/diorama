@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="diorama.css">
+</head>
+<body>
+    <button id="changeCharacters">Change Characters</button>
+    <canvas id="canvas1"></canvas>
+<script>
+const canvas = document.getElementById("canvas1");
+const ctx = canvas.getContext("2d");
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+class Symbol {
+    constructor(x, y, fontSize, canvasHeight, characters) {
+        this.x = x;
+        this.y = y;
+        this.fontSize = fontSize;
+        this.text = '';
+        this.canvasHeight = canvasHeight;
+        this.color = `hsl(${Math.random() * 360}, 100%, 50%)`;
+        this.borderColor = `rgba(0, 0, 0, 0.2)`;
+        this.characters = characters;
+    }
+
+    draw(context) {
+        this.text = this.characters.charAt(Math.floor(Math.random() * this.characters.length));
+        context.fillStyle = this.color;
+        context.fillText(this.text, this.x * this.fontSize, this.y * this.fontSize);
+        context.strokeStyle = this.borderColor;
+        context.lineWidth = 1;
+        context.strokeText(this.text, this.x * this.fontSize, this.y * this.fontSize);
+        if (this.y * this.fontSize > this.canvasHeight && Math.random() > 0.95) {
+            this.y = 0;
+        } else {
+            this.y += 1;
+        }
+    }
+}
+
+class Effect {
+    constructor(canvasWidth, canvasHeight) {
+        this.canvasWidth = canvasWidth;
+        this.canvasHeight = canvasHeight;
+        this.fontSize = 20;
+        this.columns = this.canvasWidth / this.fontSize;
+        this.symbols = [];
+        this.characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        this.alternateCharacters = this.characters + 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨヲゴヅドボポヴッン';
+        this.#initialize();
+    }
+
+    #initialize() {
+        for (let i = 0; i < this.columns; i++) {
+            this.symbols[i] = new Symbol(i, 0, this.fontSize + Math.random() * 10, this.canvasHeight, this.characters);
+        }
+    }
+
+    switchCharacters() {
+        this.symbols.forEach(symbol => {
+            if (symbol.characters === this.characters) {
+                symbol.characters = this.alternateCharacters;
+            } else {
+                symbol.characters = this.characters;
+            }
+        });
+    }
+}
+
+const effect = new Effect(canvas.width, canvas.height);
+
+function animate() {
+    const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+    gradient.addColorStop(0, 'rgba(0, 0, 0, 0.6)');
+    gradient.addColorStop(1, 'rgba(0, 0, 0, 0.1)');
+
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.font = `${effect.fontSize}px monospace`;
+    ctx.fillStyle = 'hsl(0, 100%, 50%)';
+
+    effect.symbols.forEach(symbol => symbol.draw(ctx));
+    requestAnimationFrame(animate);
+}
+
+animate();
+
+const changeCharactersButton = document.getElementById('changeCharacters');
+changeCharactersButton.addEventListener('click', () => {
+    effect.switchCharacters();
+});
+</script>
+</body>
+</html>
